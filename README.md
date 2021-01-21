@@ -38,8 +38,8 @@ Alternatively some scripts have been included to streamline this process, these 
 
 Here is the main protocol that main.cpp uses for uWebSocketIO in communicating with the simulator.
 
-INPUT: values provided by the simulator to the c++ program
-
+INPUT: values provided by the simulator to the C++ program
+```
 // sense noisy position data from the simulator
 
 ["sense_x"]
@@ -59,10 +59,11 @@ INPUT: values provided by the simulator to the c++ program
 ["sense_observations_x"]
 
 ["sense_observations_y"]
-
+```
 
 OUTPUT: values provided by the c++ program to the simulator
 
+```
 // best particle values used for calculating the error evaluation
 
 ["best_particle_x"]
@@ -82,6 +83,7 @@ OUTPUT: values provided by the c++ program to the simulator
 ["best_particle_sense_x"] <= list of sensed x positions
 
 ["best_particle_sense_y"] <= list of sensed y positions
+```
 
 ## Data
 
