@@ -1,16 +1,24 @@
-# Overview
-This repository contains all the code needed to complete the final project for the Localization course in Udacity's Self-Driving Car Nanodegree.
 
-#### Submission
-All you will need to submit is your `src` directory. You should probably do a `git pull` before submitting to verify that your project passes the most up-to-date version of the grading code (there are some parameters in `src/main.cpp` which govern the requirements on accuracy and run time).
+# Particle Filter
+Udacity Self-Driving Car Engineer Nanodegree Program
 
-## Project Introduction
-Your robot has been kidnapped and transported to a new location! Luckily it has a map of this location, a (noisy) GPS estimate of its initial location, and lots of (noisy) sensor and control data.
+This project involves the a Simulator developed by Udacity which can be downloaded [here](https://github.com/udacity/self-driving-car-sim/releases).
 
-In this project you will implement a 2 dimensional particle filter in C++. Your particle filter will be given a map and some initial localization information (analogous to what a GPS would provide). At each time step your filter will also get observation and control data.
+## Dependencies
 
-## Running the Code
-This project involves the Term 2 Simulator which can be downloaded [here](https://github.com/udacity/self-driving-car-sim/releases)
+* **g++ 9.3** Installation Instructions: [Mac](https://developer.apple.com/xcode/features/) [Windows](http://www.mingw.org/) 
+* **Ubuntu Terminal** for running UNIX Terminal on Windows. [download](https://aka.ms/wslubuntu2004)
+* **uWebSocketIO** for smooth data flow between simulator and code. [download](https://github.com/uWebSockets/uWebSockets)  
+    ```
+    <Navigate to the project folder using Ubuntu terminal>
+    chmod u+x install-ubuntu.sh
+    ./install-ubuntu.sh
+    ./install-linux.sh
+    ```
+* **cmake 3.5** [Installation Instructions](https://cmake.org/install/)  
+* **make 4.1 (Linux and Mac), 3.81 (Windows)**  Installation Instructions : [Mac](https://developer.apple.com/xcode/features/) [Windows](http://gnuwin32.sourceforge.net/packages/make.html)
+
+## Installation and Usage
 
 This repository includes two files that can be used to set up and install uWebSocketIO for either Linux or Mac systems. For windows you can use either Docker, VMware, or even Windows 10 Bash on Ubuntu to install uWebSocketIO.
 
@@ -27,12 +35,6 @@ Alternatively some scripts have been included to streamline this process, these 
 1. ./clean.sh
 2. ./build.sh
 3. ./run.sh
-
-Tips for setting up your environment can be found [here](https://classroom.udacity.com/nanodegrees/nd013/parts/40f38239-66b6-46ec-ae68-03afd8a601c8/modules/0949fca6-b379-42af-a919-ee50aa304e6a/lessons/f758c44c-5e40-4e01-93b5-1a82aa4e044f/concepts/23d376c7-0195-4276-bdf0-e02f1f3c665d)
-
-Note that the programs that need to be written to accomplish the project are src/particle_filter.cpp, and particle_filter.h
-
-The program main.cpp has already been filled out, but feel free to modify it.
 
 Here is the main protocol that main.cpp uses for uWebSocketIO in communicating with the simulator.
 
@@ -81,14 +83,17 @@ OUTPUT: values provided by the c++ program to the simulator
 
 ["best_particle_sense_y"] <= list of sensed y positions
 
+## Data
 
-Your job is to build out the methods in `particle_filter.cpp` until the simulator output says:
+The data is located in a file titled *map_data.txt* under the directory titled *data*.
 
-```
-Success! Your particle filter passed!
-```
+### Format:
 
-# Implementing the Particle Filter
+Each row has three columns:
+1. x position
+2. y position
+3. landmark id
+
 The directory structure of this repository is as follows:
 
 ```
@@ -112,32 +117,13 @@ root
     |   particle_filter.h
 ```
 
-The only file you should modify is `particle_filter.cpp` in the `src` directory. The file contains the scaffolding of a `ParticleFilter` class and some associated methods. Read through the code, the comments, and the header file `particle_filter.h` to get a sense for what this code is expected to do.
+## Custom Libraries
 
-If you are interested, take a look at `src/main.cpp` as well. This file contains the code that will actually be running your particle filter and calling the associated methods.
+```Eigen``` is already included in the repo. We majorly use two data structures, `VectorXd` and `MatrixXd` to build our algorithm. However, it must be noted that it does not initialize ```VectorXd``` or ```MatrixXd``` objects with zeros upon creation.
 
-## Inputs to the Particle Filter
-You can find the inputs to the particle filter in the `data` directory.
+## Output
 
-#### The Map*
-`map_data.txt` includes the position of landmarks (in meters) on an arbitrary Cartesian coordinate system. Each row has three columns
-1. x position
-2. y position
-3. landmark id
+The image below shows three points at each timeframe. There are landmarks (marked with crossed black circles) but only some are within range of the sensors in the car (marked with green lines). Using these landmarks, the car estimates its position on the map (marked with blue circle). We know the Particle Filter works because it more or less coincides with the position of the car.
 
-### All other data the simulator provides, such as observations and controls.
-
-> * Map data provided by 3D Mapping Solutions GmbH.
-
-## Success Criteria
-If your particle filter passes the current grading code in the simulator (you can make sure you have the current version at any time by doing a `git pull`), then you should pass!
-
-The things the grading code is looking for are:
-
-
-1. **Accuracy**: your particle filter should localize vehicle position and yaw to within the values specified in the parameters `max_translation_error` and `max_yaw_error` in `src/main.cpp`.
-
-2. **Performance**: your particle filter should complete execution within the time of 100 seconds.
-
-## How to write a README
-A well written README file can enhance your project and portfolio.  Develop your abilities to create professional README files by completing [this free course](https://www.udacity.com/course/writing-readmes--ud777).
+[image1]: ./pf.PNG "Working PF"
+![alt text][image1]
