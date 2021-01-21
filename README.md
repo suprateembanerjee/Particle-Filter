@@ -117,10 +117,6 @@ root
     |   particle_filter.h
 ```
 
-## Custom Libraries
-
-```Eigen``` is already included in the repo. We majorly use two data structures, `VectorXd` and `MatrixXd` to build our algorithm. However, it must be noted that it does not initialize ```VectorXd``` or ```MatrixXd``` objects with zeros upon creation.
-
 ## Output
 
 The image below shows three points at each timeframe. There are landmarks (marked with crossed black circles) but only some are within range of the sensors in the car (marked with green lines). Using these landmarks, the car estimates its position on the map (marked with blue circle). We know the Particle Filter works because it more or less coincides with the position of the car.
