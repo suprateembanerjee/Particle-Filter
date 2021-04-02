@@ -1,10 +1,7 @@
 /**
  * particle_filter.cpp
  *
- * Created on: Dec 12, 2016
- * Author: Tiffany Huang
-
- * Modified on: Jan 3, 2021
+ * Created on: Apr 2, 2021
  * Author: Suprateem Banerjee
  */
 
@@ -47,6 +44,7 @@ void ParticleFilter::init(double x, double y, double theta, double std[])
   normal_distribution<double> dist_theta(theta, std[2]);
 
   particles = vector<Particle>(num_particles);
+
   for(int i=0;i<num_particles;i++)
   {
     particles[i].id = i;
@@ -59,7 +57,8 @@ void ParticleFilter::init(double x, double y, double theta, double std[])
   is_initialized = true;
 }
 
-void ParticleFilter::prediction(double delta_t, double std_pos[], double velocity, double yaw_rate) 
+void ParticleFilter::prediction(double delta_t, double std_pos[], double velocity, 
+                                double yaw_rate) 
 {
   // Add measurements to each particle and add random Gaussian noise.
 
@@ -71,12 +70,12 @@ void ParticleFilter::prediction(double delta_t, double std_pos[], double velocit
   double op1 = yaw_rate * delta_t;
   double op2 = velocity / yaw_rate;
 
-  for(int i=0; i<particles.size(); i++)
+  for(int i=0; i < particles.size(); i++)
   {
     if(fabs(yaw_rate) < 0.000001)
     {
-      particles[i].x += velocity*delta_t*cos(particles[i].theta);
-      particles[i].y += velocity*delta_t*sin(particles[i].theta);
+      particles[i].x += velocity * delta_t * cos(particles[i].theta);
+      particles[i].y += velocity * delta_t * sin(particles[i].theta);
     }
     else
     {
@@ -92,13 +91,15 @@ void ParticleFilter::prediction(double delta_t, double std_pos[], double velocit
 
 }
 
-void ParticleFilter::dataAssociation(vector<LandmarkObs> predicted, vector<LandmarkObs>& observations)
+void ParticleFilter::dataAssociation(vector<LandmarkObs> predicted, 
+                                     vector<LandmarkObs>& observations)
 {
    // Find the predicted measurement that is closest to each observed measurement.
    //  Assign the observed measurement to this particular landmark.
 
   double min_dist;
-  for(int i=0;i<observations.size();i++)
+
+  for(int i=0; i<observations.size(); i++)
   {
     min_dist = numeric_limits<double>::max();
     observations[i].id = -1;
@@ -106,6 +107,7 @@ void ParticleFilter::dataAssociation(vector<LandmarkObs> predicted, vector<Landm
     for(int j=0; j<predicted.size();j++)
     {
       double distance = dist(predicted[j].x, predicted[j].y, observations[i].x, observations[i].y);
+      
       if(distance < min_dist)
       {
         min_dist = distance;

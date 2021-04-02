@@ -2,8 +2,8 @@
  * particle_filter.h
  * 2D particle filter class.
  *
- * Created on: Dec 12, 2016
- * Author: Tiffany Huang
+ * Created on: Apr 2, 2021
+ * Author: Suprateem Banerjee
  */
 
 #ifndef PARTICLE_FILTER_H_
@@ -25,7 +25,8 @@ struct Particle {
 };
 
 
-class ParticleFilter {  
+class ParticleFilter 
+{  
  public:
   // Constructor
   // @param num_particles Number of particles
@@ -35,7 +36,7 @@ class ParticleFilter {
   ~ParticleFilter() {}
 
   /**
-   * init Initializes particle filter by initializing particles to Gaussian
+   * init() Initializes particle filter by initializing particles to Gaussian
    *   distribution around first position and all the weights to 1.
    * @param x Initial x position [m] (simulated estimate from GPS)
    * @param y Initial y position [m]
@@ -46,7 +47,7 @@ class ParticleFilter {
   void init(double x, double y, double theta, double std[]);
 
   /**
-   * prediction Predicts the state for the next time step
+   * prediction() Predicts the state for the next time step
    *   using the process model.
    * @param delta_t Time between time step t and t+1 in measurements [s]
    * @param std_pos[] Array of dimension 3 [standard deviation of x [m], 
@@ -58,7 +59,7 @@ class ParticleFilter {
                   double yaw_rate);
   
   /**
-   * dataAssociation Finds which observations correspond to which landmarks 
+   * dataAssociation() Finds which observations correspond to which landmarks 
    *   (likely by using a nearest-neighbors data association).
    * @param predicted Vector of predicted landmark observations
    * @param observations Vector of landmark observations
@@ -67,7 +68,7 @@ class ParticleFilter {
                        std::vector<LandmarkObs>& observations);
   
   /**
-   * updateWeights Updates the weights for each particle based on the likelihood
+   * updateWeights() Updates the weights for each particle based on the likelihood
    *   of the observed measurements. 
    * @param sensor_range Range [m] of sensor
    * @param std_landmark[] Array of dimension 2
@@ -80,7 +81,7 @@ class ParticleFilter {
                      const Map &map_landmarks);
   
   /**
-   * resample Resamples from the updated set of particles to form
+   * resample() Resamples from the updated set of particles to form
    *   the new set of particles.
    */
   void resample();
@@ -96,7 +97,7 @@ class ParticleFilter {
                        const std::vector<double>& sense_y);
 
   /**
-   * initialized Returns whether particle filter is initialized yet or not.
+   * initialized() Returns whether particle filter is initialized yet or not.
    */
   const bool initialized() const {
     return is_initialized;

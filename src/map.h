@@ -1,8 +1,8 @@
 /**
  * map.h
  *
- * Created on: Dec 12, 2016
- * Author: mufferm
+ * Created on: Apr 2, 2021
+ * Author: Suprateem Banerjee
  */
 
 #ifndef MAP_H_
@@ -10,9 +10,11 @@
 
 #include <vector>
 
-class Map {
+class Map 
+{
  public:  
-  struct single_landmark_s {
+  struct single_landmark_s 
+  {
     int id_i ; // Landmark ID
     float x_f; // Landmark x-position in the map (global coordinates)
     float y_f; // Landmark y-position in the map (global coordinates)
