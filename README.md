@@ -23,7 +23,7 @@ This repository includes two files that can be used to set up and install uWebSo
 
 Once the install for uWebSocketIO is complete, the main program can be built and ran by doing the following from the project top directory.
 
-    cd build
+    mkdir build && cd build
     cmake .. && make
     ./particle_filter
 
