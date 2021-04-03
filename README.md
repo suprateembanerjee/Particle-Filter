@@ -1,4 +1,3 @@
-
 # Particle Filter
 Udacity Self-Driving Car Engineer Nanodegree Program
 
@@ -24,17 +23,17 @@ This repository includes two files that can be used to set up and install uWebSo
 
 Once the install for uWebSocketIO is complete, the main program can be built and ran by doing the following from the project top directory.
 
-1. mkdir build
-2. cd build
-3. cmake ..
-4. make
-5. ./particle_filter
+    mkdir build
+    cd build
+    cmake ..
+    make
+    ./particle_filter
 
 Alternatively some scripts have been included to streamline this process, these can be leveraged by executing the following in the top directory of the project:
 
-1. ./clean.sh
-2. ./build.sh
-3. ./run.sh
+    ./clean.sh
+    ./build.sh
+    ./run.sh
 
 Here is the main protocol that main.cpp uses for uWebSocketIO in communicating with the simulator.
 
