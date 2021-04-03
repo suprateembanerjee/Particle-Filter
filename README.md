@@ -23,10 +23,8 @@ This repository includes two files that can be used to set up and install uWebSo
 
 Once the install for uWebSocketIO is complete, the main program can be built and ran by doing the following from the project top directory.
 
-    mkdir build
     cd build
-    cmake ..
-    make
+    cmake .. && make
     ./particle_filter
 
 Alternatively some scripts have been included to streamline this process, these can be leveraged by executing the following in the top directory of the project:
@@ -34,6 +32,8 @@ Alternatively some scripts have been included to streamline this process, these 
     ./clean.sh
     ./build.sh
     ./run.sh
+    
+On the Ubuntu Terminal, we can observe that the program is listening to a port. Now, if the Simulator is launched, it should automatically connect and execute.
 
 Here is the main protocol that main.cpp uses for uWebSocketIO in communicating with the simulator.
 
@@ -120,7 +120,7 @@ root
 
 ## Output
 
-The image below shows three points at each timeframe. There are landmarks (marked with crossed black circles) but only some are within range of the sensors in the car (marked with green lines). Using these landmarks, the car estimates its position on the map (marked with blue circle). We know the Particle Filter works because it more or less coincides with the position of the car.
+The image below shows three points at each timeframe. There are landmarks (marked with crossed black circles) but only some are within range of the sensors in the car (marked with green lines). Using these landmarks, the car estimates its position on the map (marked with blue circle). We know the Particle Filter works because it more or less coincides with the position of the car. A video of the output titled **Output.mp4** can also be found in the repository.
 
 [image1]: ./pf.PNG "Working PF"
 ![alt text][image1]
