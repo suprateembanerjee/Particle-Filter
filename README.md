@@ -14,6 +14,12 @@ This project involves the a Simulator developed by Udacity which can be download
     ./install-ubuntu.sh
     ./install-linux.sh
     ```
+    If you install from source, checkout to commit `e94b6e1`, i.e.
+    ```
+    git clone https://github.com/uWebSockets/uWebSockets 
+    cd uWebSockets
+    git checkout e94b6e1
+    ```
 * **cmake 3.5** [Installation Instructions](https://cmake.org/install/)  
 * **make 4.1 (Linux and Mac), 3.81 (Windows)**  Installation Instructions : [Mac](https://developer.apple.com/xcode/features/) [Windows](http://gnuwin32.sourceforge.net/packages/make.html)
 
